@@ -1,5 +1,7 @@
 let
-  pkgs = import <nixpkgs> { };
+  # usando paquetes inestables
+  pkgs = import (fetchTarball https://nixos.org/channels/nixos-unstable/nixexprs.tar.xz) { };
+
   mainPkgs = with pkgs; [
     rnix-lsp #para nix features
     yarn
@@ -10,6 +12,7 @@ let
     rubocop
     pg
   ];
+
 in
 pkgs.mkShell {
   packages = [
